@@ -21,3 +21,9 @@ Route::get('/users', 'UserController@index');
 Route::get('/users/edit', 'UserController@edit');
 Route::get('/users/{user}', 'UserController@show');
 Route::put('/users/{user}', 'UserController@update');
+
+//Samples
+Route::get('/samples', 'SampleController@index');
+Route::get('/samples/create', 'SampleController@create');
+Route::get('/samples/{sample}', 'SampleController@show');
+Route::post('/samples', 'SampleController@store');

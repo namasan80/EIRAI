@@ -16,7 +16,7 @@
                     @endisset
                     
                     </h3>
-                    <p>{{ $user->profile }}
+                    <p>{!! nl2br(e($user->profile)) !!}
                     @empty($user->profile)
                         (自己紹介が設定されていません)</p>
                     @endempty
