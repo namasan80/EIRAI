@@ -6,9 +6,11 @@
         <div class="col-md-8">
             <h1 class="title">ポートフォリオ投稿</h1>
             <div class="content">
-                <form action="/samples" method="POST">
+                <form action="/samples" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="title">
+                        <input type="file" name="image">
+                        {{ csrf_field() }}
                         <h2>タイトル</h2>
                         <input type="text" name="sample[name]" placeholder="タイトル"/>
                     </div>
