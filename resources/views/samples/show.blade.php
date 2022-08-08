@@ -8,6 +8,7 @@
                 {{ $sample->name }}
             </h1>
             <div class="content">
+            <img src="{{ $sample->image_path }}"  width="384" height="216">
                 <div class="content__post">  
                     <h3>依頼費用の目安</h3>
                     <p>{{ $sample->price }}円(あくまで目安です)</p>
