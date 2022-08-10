@@ -23,6 +23,7 @@ class SampleController extends Controller
         $form = $request->all();
         
         $input = $request['sample'];
+        $input += ['user_id' => $request->user()->id];
         $image = $request->file('image');
         // バケットの`myprefix`フォルダへアップロード
         $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');

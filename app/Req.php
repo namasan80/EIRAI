@@ -6,14 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\User;
 
-class Sample extends Model
+class Req extends Model
 {
+    protected $dates = ['deadline'];
+    
     protected $fillable = [
-        'name',
+        'title',
         'detail',
         'price',
-        'time',
-        'user_id',
+        'deadline',
     ];
     
     public function user()
