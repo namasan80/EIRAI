@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSamplesTable extends Migration
+class CreateReqsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateSamplesTable extends Migration
      */
     public function up()
     {
-        Schema::create('samples', function (Blueprint $table) {
+        Schema::create('reqs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->text('detail')->nullable();
+            $table->string('title');
+            $table->string('detail');
+            $table->string('musicurl')->nullable();
             $table->integer('price')->unsigned();
-            $table->integer('time')->unsigned();
+            $table->datetime('deadline');
             $table->integer('user_id')->unsigned();
-            $table->string('image_path')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateSamplesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('samples');
+        Schema::dropIfExists('reqs');
     }
 }

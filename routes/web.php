@@ -28,7 +28,8 @@ Route::get('/samples/create', 'SampleController@create');
 Route::get('/samples/{sample}', 'SampleController@show');
 Route::post('/samples', 'SampleController@store');
 
-//後で消してOK
-Route::get('/post/create', 'PostsController@add');
-Route::get('/post', 'PostsController@index');
-Route::post('/post/create', 'PostsController@create');
+//Samples
+Route::get('/requests', 'ReqController@index');
+Route::get('/requests/create', 'ReqController@create');
+Route::get('/requests/{req}', 'ReqController@show');
+Route::post('/requests', 'ReqController@store');
