@@ -33,3 +33,7 @@ Route::get('/requests', 'ReqController@index');
 Route::get('/requests/create', 'ReqController@create');
 Route::get('/requests/{req}', 'ReqController@show');
 Route::post('/requests', 'ReqController@store');
+
+//follow
+Route::post('/users/{user}/follow', 'FollowUserController@follow');
+Route::post('/users/{user}/unfollow', 'FollowUserController@unfollow');

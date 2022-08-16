@@ -9,7 +9,7 @@
             </h1>
             <div class="content">
                 <div class="content__post"> 
-                    依頼者:{{ $req->user->name }}
+                    <p>依頼者:<a href="/users/{{$req->user->id}}">{{ $req->user->name }}</a></p>
                     <h3>依頼費用の目安</h3>
                     <p>{{ $req->price }}円(あくまで目安です)</p>
                     <h3>募集締切</h3>  

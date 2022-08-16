@@ -1,0 +1,58 @@
+.samplediv{
+  display:inline-block;
+}
+
+.TopDiv {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.RankImg {
+  width: 320;
+  height: 180;
+  border-radius: 6px;
+  background-color: rgb(255, 255, 255);
+}
+
+.RankBox{
+  position: relative;
+  display: flex;
+  width: 320;
+  height: 180;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.RankImgBox{
+  position: relative;
+  display: flex;
+  width: 320;
+  height: 180;
+}
+
+.RankNumberBox{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  align-items: flex-start;
+  padding: 6px 6px;
+}
+
+.RankNumber{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  line-height: 24px;
+  color: rgb(255, 255, 255);
+  background-color: rgba(100, 100, 100, 0.5);
+}
+
+.TopMore{
+  display: flex;
+}

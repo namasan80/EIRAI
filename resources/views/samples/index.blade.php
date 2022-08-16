@@ -8,8 +8,8 @@
             <h1>サンプル一覧</h1>
             <div class='posts'>
                 @foreach ($samples as $sample)
-                    <div class='body'>
-                        <a href="/samples/{{$sample->id}}"><img src="{{ $sample->image_path }}" width="384" height="216"></a>
+                    <div class='samplediv' >
+                        <a href="/samples/{{$sample->id}}"><img src="{{ $sample->image_path }}" width="320" height="180"></a>
                     </div>
                 @endforeach
             </div>

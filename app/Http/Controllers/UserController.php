@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Users;
+use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function index(Users $user)
+    public function index(User $user)
     {
         return view('users/index');
     }
     
-    public function show(Users $user)
+    public function show(User $user)
     {
-        return view('users/show')->with(['user' => $user]);
+        $samples = $user->samples();
+        return view('users/show')->with(['user' => $user,'samples' => $user->getSamples()]);
     }
     
     public function edit()
@@ -24,7 +25,7 @@ class UserController extends Controller
         return view('users/edit')->with(['user' => $auth]);
     }
     
-    public function update(UserRequest $request , Users $user)
+    public function update(UserRequest $request , User $user)
     {
         $input_user = $request['user'];
         Auth::user()->fill($input_user)->save();
