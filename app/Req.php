@@ -15,6 +15,7 @@ class Req extends Model
         'detail',
         'price',
         'deadline',
+        'user_id',
     ];
     
     public function user()

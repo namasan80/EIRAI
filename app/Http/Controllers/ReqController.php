@@ -25,7 +25,7 @@ class ReqController extends Controller
         $input = $request['req'];
         $input += ['user_id' => $request->user()->id];
         //現在の日程から締切日を計算
-        $req->deadline = Carbon::now()->addDay($request['deadline']);
+        $input += ['deadline' => Carbon::now()->addDay($request['deadline'])];
         $req->fill($input)->save();
         return redirect('/requests/' . $req->id);
     }

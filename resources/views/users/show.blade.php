@@ -9,21 +9,41 @@
                 <div class="content__post">
                     <h3>プロフィール
                     
-                    @isset(Auth::user()->id)
-                        @if(Auth::user()->id == $user->id)
-                            <a href="/users/edit">編集</a>
-                        @endif
-                    @endisset
-                    
+                        @auth
+                            @if(Auth::user()->id == $user->id)
+                                <a href="/users/edit">編集</a>
+                            @endif
+                        @endauth
                     </h3>
+                    
+                    @auth
+                        @if(Auth::user()->id != $user->id)
+                            <div class="content">
+                                <form action="/users/{{$user->id}}/follow" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="submit" value="フォローする"/>
+                                </form>
+                                <form action="/users/{{$user->id}}/unfollow" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="submit" value="フォロー解除"/>
+                                </form>
+                            </div>
+                        @endif
+                    @endauth
+                    
+                    <p>フォロワー：{{$user->countfollower($user)}}人</p>
                     <p>{!! nl2br(e($user->profile)) !!}
                     @empty($user->profile)
                         (自己紹介が設定されていません)</p>
                     @endempty
                     <h3>サンプル一覧</h3>
-                    <p>さんぷる</p>
+                        @foreach ($samples as $sample)
+                            <div class='body'>
+                                <p>test</p>
+                                <a href="/samples/{{$sample->id}}"><img src="{{ $sample->image_path }}" width="384" height="216"></a>
+                            </div>
+                        @endforeach
                     <h3>リクエスト一覧</h3>
-                    <p>りくえすと</p>
                 </div>
             </div>
         <div class="footer">
