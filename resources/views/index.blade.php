@@ -23,7 +23,7 @@
                     @endforeach
                 </div>
                 <div class='TopMore'>
-                    <p>もっと見る</p>
+                    <a href="/samples">もっと見る</a>
                 </div>
             </div>
             <div class='TopBox'>
@@ -32,11 +32,9 @@
                     (ここに新着リクエストが並ぶ)
                 </div>
                 <div class='TopMore'>
-                    <p>もっと見る</p>
+                    <a href="/requests">もっと見る</a>
                 </div>
             </div>
-            <p class='body'><a href="/requests">リクエスト一覧</a></p>
-            <p class='body'><a href="/samples">サンプル一覧</a></p>
         </div>
     </div>
 </div>

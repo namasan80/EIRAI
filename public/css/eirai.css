@@ -7,6 +7,11 @@
   flex-wrap: wrap;
 }
 
+.TopBox {
+  position: relative;
+  margin-bottom:20px;
+}
+
 .RankImg {
   width: 320;
   height: 180;
