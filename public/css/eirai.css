@@ -61,3 +61,15 @@
 .TopMore{
   display: flex;
 }
+
+/*サンプル*/
+
+.SampleImg{
+    max-width: 640;
+    height: auto;
+}
+
+.SampleImg img{
+    width: 100%;
+    aspect-ratio: 640 / 360;
+}

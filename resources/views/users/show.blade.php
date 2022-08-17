@@ -36,13 +36,23 @@
                     @empty($user->profile)
                         (自己紹介が設定されていません)</p>
                     @endempty
-                    <h3>サンプル一覧</h3>
-                        @foreach ($samples as $sample)
-                            <div class='body'>
-                                <p>test</p>
-                                <a href="/samples/{{$sample->id}}"><img src="{{ $sample->image_path }}" width="384" height="216"></a>
-                            </div>
-                        @endforeach
+                    <div class='TopBox'>
+                        <h3>新着サンプル</h3>
+                        <div class='TopDiv'>
+                            @foreach ($samples as $key => $sample)
+                                <div class='RankBox'>
+                                    <a href="/samples/{{$sample->id}}">
+                                        <div class='RankImgBox'>
+                                            <img src="{{ $sample->image_path }}" class="RankImg">
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class='TopMore'>
+                            <a href="/samples">もっと見る</a>
+                        </div>
+                    </div>
                     <h3>リクエスト一覧</h3>
                 </div>
             </div>
