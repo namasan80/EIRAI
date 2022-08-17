@@ -20,4 +20,9 @@ class Sample extends Model
     {
         return $this->belongsTo('App\User');
     }
+    
+    public function goods()
+    {
+        return $this->HasMany('App\Good');
+    }
 }

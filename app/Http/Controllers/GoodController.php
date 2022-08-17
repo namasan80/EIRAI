@@ -8,13 +8,8 @@ use Auth;
 
 class GoodController extends Controller
 {
-    public function store($postId)
+    public function store($sampleId)
     {
-        Auth::user()->like($postId);
-    }
-
-    public function destroy($postId)
-    {
-        Auth::user()->unlike($postId);
+        Auth::user()->good($sampleId);
     }
 }

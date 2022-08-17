@@ -12,7 +12,20 @@
             </div>
             <div class="content__post"> 
                 <p>作者:<a href="/users/{{$sample->user->id}}">{{ $sample->user->name }}</a></p>
-                <button onclick="good({{$sample->id}})">いいね</button>
+                
+                @auth
+                <button class="GoodButton{{$sample->id}}" onclick="good({{$sample->id}})">
+                    @if(Auth::user()->isgood($sample->id))
+                        いいね解除
+                    @else
+                        いいね
+                    @endif
+                </button>
+                @else
+                    ログインするといいねができます。
+                @endauth
+                <p>いいね数：{{ $sample->goods()->count()}}(←最終的に消す予定)</p>
+                
                 <h3>依頼費用の目安</h3>
                 <p>{{ $sample->price }}円(あくまで目安です)</p>
                 <h3>制作時間</h3>  

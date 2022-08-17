@@ -18,22 +18,35 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Users
 Route::get('/users', 'UserController@index');
-Route::get('/users/edit', 'UserController@edit');
 Route::get('/users/{user}', 'UserController@show');
-Route::put('/users/{user}', 'UserController@update');
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/users/edit', 'UserController@edit');
+    Route::put('/users/{user}', 'UserController@update');
+});
 
 //Samples
 Route::get('/samples', 'SampleController@index');
-Route::get('/samples/create', 'SampleController@create');
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/samples/create', 'SampleController@create');
+    Route::post('/samples', 'SampleController@store');
+});
 Route::get('/samples/{sample}', 'SampleController@show');
-Route::post('/samples', 'SampleController@store');
 
-//Samples
+//Requests
 Route::get('/requests', 'ReqController@index');
-Route::get('/requests/create', 'ReqController@create');
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/requests/create', 'ReqController@create');
+    Route::post('/requests', 'ReqController@store');
+});
 Route::get('/requests/{req}', 'ReqController@show');
-Route::post('/requests', 'ReqController@store');
 
 //follow
-Route::post('/users/{user}/follow', 'FollowUserController@follow');
-Route::post('/users/{user}/unfollow', 'FollowUserController@unfollow');
+Route::group(['middleware' => ['auth']], function(){
+    Route::post('/users/{user}/follow', 'FollowUserController@follow');
+    Route::post('/users/{user}/unfollow', 'FollowUserController@unfollow');
+});
+
+//いいね
+Route::group(['middleware' => ['auth']], function(){
+    Route::post('/good/{sampleId}','GoodController@store');
+});

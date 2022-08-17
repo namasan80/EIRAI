@@ -8,9 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Good extends Model
 {
-    public function sample()   
+    protected $fillable = [
+        'user_id',
+        'sample_id',
+    ];
+    
+    public function sample()
     {
-        return $this->belongsTo('App\Sample');  
+        return $this->belongsTo('App\Sample');
     }
     
     public function user()   

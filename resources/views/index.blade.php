@@ -28,9 +28,13 @@
             </div>
             <div class='TopBox'>
                 <h2 class='title'>新着リクエスト</h2>
-                <div class='TopDiv'>
-                    (ここに新着リクエストが並ぶ)
-                </div>
+                @foreach ($reqs as $req)
+                    <div>
+                        <a href="/reqs/{{$req->id}}">
+                            <h2>{{$req->title}}</h2>
+                        </a>
+                    </div>
+                    @endforeach
                 <div class='TopMore'>
                     <a href="/requests">もっと見る</a>
                 </div>
