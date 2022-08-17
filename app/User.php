@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
 use App\Req;
 use App\Sample;
 use App\FollowUser;
+use App\Good;
 
 class User extends Authenticatable
 {
@@ -46,7 +48,7 @@ class User extends Authenticatable
     
     public function getSamples(int $limit_count = 2)
     {
-         return $this->samples()->take(4)->get();
+         return $this->samples()->orderBy('updated_at', 'DESC')->take(4)->get();
     }
     
     public function getReqs(int $limit_count = 2)
@@ -71,22 +73,21 @@ class User extends Authenticatable
     }
     
     //いいね関連処理
-    public function isGood($sampleID)
+    public function isgood($sampleId)
     {
-      return $this->goods()->where('post_id',$sampleId)->exists();
+      return $this->goods()->where('sample_id',$sampleId)->exists();
     }
     
-    public function Good($sampleId)
+    public function good($sampleId)
     {
-      if(!$this->isLike($postId)){
-        $this->goods()->attach($postId);
-      }
-    }
-
-    public function unGood($sampleId)
-    {
-      if($this->isLike($postId)){
-        $this->goods()->detach($postId);
+      if($this->isgood($sampleId)){
+        $good = $this->goods()->where('sample_id',$sampleId)->first();
+        $good->delete();
+      }else{
+        $good = Good::create([
+                'user_id' => \Auth::user()->id,
+                'sample_id' => $sampleId,
+            ]);
       }
     }
 }
