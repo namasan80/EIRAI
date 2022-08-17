@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class='TopBox'>
-                <h2 class='title'>人気サムネランキング</h2>
+                <h2 class='title'>サムネ人気ランキング</h2>
                 <div class='TopDiv'>
                     @foreach ($samples as $key => $sample)
                         <div class='RankBox'>

@@ -46,7 +46,7 @@ class User extends Authenticatable
     
     public function getSamples(int $limit_count = 2)
     {
-         return $this->samples()->get();
+         return $this->samples()->take(4)->get();
     }
     
     public function getReqs(int $limit_count = 2)
@@ -54,6 +54,7 @@ class User extends Authenticatable
          return $this->reqs()->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
+    //リレーション
     public function reqs()
     {
         return $this->hasMany('App\Req');  
@@ -62,5 +63,30 @@ class User extends Authenticatable
     public function samples()
     {
         return $this->hasMany('App\Sample');  
+    }
+    
+    public function goods()
+    {
+        return $this->hasMany('App\Good');  
+    }
+    
+    //いいね関連処理
+    public function isGood($sampleID)
+    {
+      return $this->goods()->where('post_id',$sampleId)->exists();
+    }
+    
+    public function Good($sampleId)
+    {
+      if(!$this->isLike($postId)){
+        $this->goods()->attach($postId);
+      }
+    }
+
+    public function unGood($sampleId)
+    {
+      if($this->isLike($postId)){
+        $this->goods()->detach($postId);
+      }
     }
 }

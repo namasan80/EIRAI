@@ -15,7 +15,7 @@ class AddProfileUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->text('profile')->nullable();
-            $table->dateTime('skima_id')->nullable();
+            $table->text('skima_id')->nullable();
             $table->boolean('can_request')->default(false);
             $table->dateTime('last_login_at')->nullable();
         });

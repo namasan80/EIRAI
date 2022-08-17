@@ -12,7 +12,6 @@
                     <h2>名前</h2>
                     <input type='text' name='user[name]' value="{{ $user->name }}">
                     <h2>プロフィール</h2>
-                    <!--<input type='text' name='user[profile]' value="{{ $user->profile }}">-->
                     <textarea name='user[profile]'>{{ $user->profile }}</textarea><br>
                     <input type="submit" value="保存">
                 </form>
