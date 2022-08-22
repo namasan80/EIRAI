@@ -38,8 +38,19 @@
                 <div class='TopMore'>
                     <a href="/requests">もっと見る</a>
                 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
             </div>
         </div>
     </div>
-</div>
+</div>>
 @endsection
