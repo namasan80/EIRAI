@@ -7,14 +7,13 @@
             <h1 class="title">{{ $user->name }}</h1>
             <div class="content">
                 <div class="content__post">
-                    <h3>プロフィール
+                    <h3  style="display:inline;">プロフィール</h3>
                     
                         @auth
                             @if(Auth::user()->id == $user->id)
-                                <a href="/users/edit">編集</a>
+                                <a href="/users/edit" class="GrayA">編集</a>
                             @endif
                         @endauth
-                    </h3>
                     
                     @auth
                         @if(Auth::user()->id != $user->id)

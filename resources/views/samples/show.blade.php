@@ -1,17 +1,17 @@
 @extends('layouts.app')　　　　　　　　　　　　　　　　　　
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <h1 class="title">
-                {{ $sample->name }}
-            </h1>
+<div class="PageMargin">
+    <div class="PageBlank">
+        <div class="Page">
             <div class="SampleImg">
                 <img src="{{ $sample->image_path }}">
             </div>
-            <div class="content__post"> 
-                <p>作者:<a href="/users/{{$sample->user->id}}">{{ $sample->user->name }}</a></p>
+            
+            <h1 class="title">
+                {{ $sample->name }}
+            </h1>
+                <p>投稿者:<a href="/users/{{$sample->user->id}}">{{ $sample->user->name }}</a></p>
                 
                 @auth
                 <button class="GoodButton{{$sample->id}}" onclick="good({{$sample->id}})">
@@ -27,16 +27,17 @@
                 <p>いいね数：{{ $sample->goods()->count()}}(←最終的に消す予定)</p>
                 
                 <h3>依頼費用の目安</h3>
-                <p>{{ $sample->price }}円(あくまで目安です)</p>
+                <p>{{ $sample->price }}円</p>
                 <h3>制作時間</h3>  
                 <p>{{ $sample->time }}時間</p>
                 <h3>詳細</h3>
                 <p>{{ $sample->detail }}</p>
-            </div>
             <div class="footer">
-                <a href="/samples">戻る</a>
+                <a href="/samples">一覧へ</a>
             </div>
         </div>
+    </div>
+    <div class="PageTest">
     </div>
 </div>
 @endsection
