@@ -1,11 +1,11 @@
 @extends('layouts.app')　　　　　　　　　　　　　　　　　　
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="PageMargin">
+    <div class="PageBlank">
+        <div class="Page">
             <div class='TopBox'>
-                <h2 class='title'>サムネ人気ランキング</h2>
+                <h2 class='TopTitle'>サムネ人気ランキング</h2>
                 <div class='TopDiv'>
                     @foreach ($samples as $key => $sample)
                         <div class='RankBox'>
@@ -23,7 +23,7 @@
                     @endforeach
                 </div>
                 <div class='TopMore'>
-                    <a href="/samples">もっと見る</a>
+                    <a href="/samples" class="GrayA">もっと見る</a>
                 </div>
             </div>
             <div class='TopBox'>
@@ -52,5 +52,5 @@
             </div>
         </div>
     </div>
-</div>>
+</div>
 @endsection
