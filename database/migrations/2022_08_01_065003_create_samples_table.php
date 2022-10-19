@@ -17,8 +17,8 @@ class CreateSamplesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('detail')->nullable();
-            $table->integer('price')->unsigned();
-            $table->integer('time')->unsigned();
+            $table->integer('price')->unsigned()->nullable();
+            $table->integer('time')->unsigned()->nullable();
             $table->integer('user_id')->unsigned();
             $table->string('image_path')->nullable();
             $table->timestamps();

@@ -1,6 +1,6 @@
 /*App*/
 .HeaderNav{
-    z-index: 50;
+    z-index: 100;
     box-sizing: border-box;
     position: fixed;
     display: flex;
@@ -17,12 +17,18 @@
     align-items: center;
 }
 
+.App{
+    margin: 0px;
+    padding: 0px;
+}
+
 .Main{
     position: relative;
-    /*padding: 64px 0px 0px;*/
+    padding:48px 0px 0px;
 }
 
 .HeaderBody{
+    position: fixed;
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -158,24 +164,79 @@
 
 .GrayA:hover {
   color: #444;
-  background-color: #eee;
+  background-color: #F9F9F9;
   text-decoration: none;
+}
+
+
+/*アイコン*/
+.ProfileBox{
+  display: flex;
+  padding: 10px 10px 30px;
+}
+
+.Icon {
+  display: inline-block;
+  width:100px;
+  height:100px;
+  border-radius:50%;
+}
+
+.ProfileName {
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  margin: 32px 10px auto 20px;
+}
+
+.MiniNameBox{
+  margin: 0px 0px 10px 0px;
+}
+
+.MiniIconBox{
+  display: inline-block;
+  /*margin: 0px 10px 0px 0px;*/
+}
+
+.MiniIcon {
+  display: inline-block;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+}
+
+.MiniNameA {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.MiniNameA:hover {
+    color: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+}
+
+.MiniName {
+  display: inline-block;
+  align-items: center;
 }
 
 /*各ページ*/
 
 .PageMargin{
     padding: 0px 16px;
-    margin: 0px auto;
-    max-width: 1200px;
+    margin: 0px auto 0px;
+    width: 1200px;
     display: flex;
 }
 
 .PageBlank{
-    width: 70%;
     padding: 6px 6px;
     border-radius: 6px;
+    width: 1040px;
     background: #fff;
+    margin: 0px auto 0px;
 }
 
 .PageTest{
@@ -198,20 +259,55 @@
     border-radius: 6px;
 }
 
+/*ログインページ*/
+.LoginBox{
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.LoginForm{
+    width: 500px;
+}
+
 /*ボタン*/
-.BtnBlue {
+.BtnGreen {
   color: #fff;
-  background-color: #3490DC;
+  background-color: #13BB00;
   border-style: none;
   padding: 0.375rem 0.75rem;
   border-radius: 100vh;
   transition: background-color .2s;
 }
 
-.BtnBlue:hover {
+.BtnGreen:hover {
   color: #E6E6E6;
-  background-color: #2F82C6;
+  background-color: #169600;
   text-decoration: none;
+}
+
+.BtnGreen2 {
+  color: #E6E6E6;
+  background-color: #169600;
+  border-style: none;
+  padding: 0.375rem 0.75rem;
+  border-radius: 100vh;
+  transition: background-color .2s;
+}
+
+.BtnGreen2:hover {
+  color: #E6E6E6;
+  background-color: #169600;
+  text-decoration: none;
+}
+
+.ErrorP {
+  color: #FF4444;
+}
+
+.TagBtn{
+  margin:  4px 2px 10px;
 }
 
 @media (max-width:768px) {
@@ -228,4 +324,14 @@
       display: none;
   }
 
+}
+
+/*汎用*/
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+  -moz-appearance:textfield;
 }

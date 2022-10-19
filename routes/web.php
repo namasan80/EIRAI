@@ -18,11 +18,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Users
 Route::get('/users', 'UserController@index');
-Route::get('/users/{user}', 'UserController@show');
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/users/edit', 'UserController@edit');
     Route::put('/users/{user}', 'UserController@update');
 });
+Route::get('/users/{user}', 'UserController@show');
 
 //Samples
 Route::get('/samples', 'SampleController@index');
@@ -40,13 +40,12 @@ Route::group(['middleware' => ['auth']], function(){
 });
 Route::get('/requests/{req}', 'ReqController@show');
 
-//follow
-Route::group(['middleware' => ['auth']], function(){
-    Route::post('/users/{user}/follow', 'FollowUserController@follow');
-    Route::post('/users/{user}/unfollow', 'FollowUserController@unfollow');
-});
-
 //いいね
 Route::group(['middleware' => ['auth']], function(){
     Route::post('/good/{sampleId}','GoodController@store');
+});
+
+//フォロー
+Route::group(['middleware' => ['auth']], function(){
+    Route::post('/follow/{userId}','FollowUserController@follow');
 });

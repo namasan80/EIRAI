@@ -1,11 +1,10 @@
 @extends('layouts.app')　　　　　　　　　　　　　　　　　　
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="PageMargin">
+    <div class="PageBlank">
+        <div class="Page">
             <h1 class="title">編集画面</h1>
-            <div class="content">
                 <form action="/users/{{ $user->id }}" method="POST">
                     @csrf
                     @method('PUT')
@@ -16,7 +15,6 @@
                     <textarea name='user[profile]'>{{ $user->profile }}</textarea><br>
                     <input type="submit" value="保存">
                 </form>
-            </div>
         </div>
     </div>
 </div>

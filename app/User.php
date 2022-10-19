@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','profile',
+        'name', 'email', 'password','profile','image_path','skima_id','twitter_id'
     ];
 
     /**
@@ -48,12 +48,51 @@ class User extends Authenticatable
     
     public function getSamples(int $limit_count = 2)
     {
-         return $this->samples()->orderBy('updated_at', 'DESC')->take(4)->get();
+         return $this->samples()->orderBy('created_at', 'DESC')->take(3)->get();
     }
     
     public function getReqs(int $limit_count = 2)
     {
-         return $this->reqs()->orderBy('updated_at', 'DESC')->paginate($limit_count);
+         return $this->reqs()->orderBy('created_at', 'DESC')->take(3)->get();
+    }
+    
+    public function isfollow($userId)
+    {
+      return $this->follows()->where('followed_user_id',$userId)->exists();
+    }
+    
+    public function follow($userId, $followusers)
+    {
+      if($this->isfollow($userId)){
+        $follow = $followusers->where('following_user_id',\Auth::user()->id)->where('followed_user_id',$userId)->first();
+        $follow->delete();
+      }else{
+        FollowUser::create([
+                'following_user_id' => \Auth::user()->id,
+                'followed_user_id' => $userId,
+            ]);
+      }
+    }
+    
+    //フォロー一覧
+    public function followUsers()
+    {
+        return $this->belongsToMany('App\User', 'follow_users', 'followed_user_id', 'following_user_id');
+    }
+
+    //フォロワー一覧
+    public function follows()
+    {
+        return $this->belongsToMany('App\User', 'follow_users', 'following_user_id', 'followed_user_id');
+    }
+    
+    //フォロー中の人の投稿一覧
+    public function getFollowsPosts()
+    {
+        //$follows = $this->follows();
+        $follows = $this->follows()->pluck("followed_user_id");
+        $samples = Sample::whereIn("user_id", $follows)->orderBy("updated_at", "DESC")->take(3)->get();
+        return $samples;
     }
     
     //リレーション
@@ -84,7 +123,7 @@ class User extends Authenticatable
         $good = $this->goods()->where('sample_id',$sampleId)->first();
         $good->delete();
       }else{
-        $good = Good::create([
+        Good::create([
                 'user_id' => \Auth::user()->id,
                 'sample_id' => $sampleId,
             ]);

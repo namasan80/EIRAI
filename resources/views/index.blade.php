@@ -26,29 +26,45 @@
                     <a href="/samples" class="GrayA">もっと見る</a>
                 </div>
             </div>
+            @auth
+            <div class='TopBox'>
+                <h2 class='TopTitle'>フォロー中の新着</h2>
+                <div class='TopDiv'>
+                    @empty($follows[0])
+                        <p>お気に入りのユーザーをフォローしましょう</p>
+                    @else
+                        @foreach ($follows as $key => $follow)
+                            <div class='RankBox'>
+                                <a href="/samples/{{$follow->id}}">
+                                    <div class='RankImgBox'>
+                                        <img src="{{ $follow->image_path }}" class="RankImg">
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    @endempty
+                </div>
+                <div class='TopMore'>
+                    @empty($follows[0])
+                            <p><a href="/samples">サンプル一覧へ</a></p>
+                    @else
+                        <a href="/samples?search=follow" class="GrayA">もっと見る</a>
+                    @endempty
+                </div>
+            </div>
+            @endauth
             <div class='TopBox'>
                 <h2 class='title'>新着リクエスト</h2>
                 @foreach ($reqs as $req)
                     <div>
-                        <a href="/reqs/{{$req->id}}">
+                        <a href="/requests/{{$req->id}}">
                             <h2>{{$req->title}}</h2>
                         </a>
                     </div>
                     @endforeach
                 <div class='TopMore'>
-                    <a href="/requests">もっと見る</a>
+                    <a href="/requests" class="GrayA">もっと見る</a>
                 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
             </div>
         </div>
     </div>
