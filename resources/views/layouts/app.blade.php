@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ mix('js/good.js') }}"></script>
+    <script src="{{ mix('js/good.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,7 +22,7 @@
     <link href="{{ asset('css/eirai.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div class="App">
         <nav class="HeaderNav">
             <div class="HeaderBody">
                 <a class="HeaderLink" href="{{ url('/') }}">
@@ -32,19 +32,17 @@
                 </ul>
                 <ul class="HeaderRight">
                     @auth
-                        <a href="{{ url('/users/'.Auth::user()->id) }}" class="BtnBlue">マイページ</a>
+                        <a href="{{ url('/users/'.Auth::user()->id) }}" class="BtnGreen">マイページ</a>
                     @else
-                        <a href="{{ url('/login') }}" class="BtnBlue">ログイン・新規登録</a>
+                        <a href="{{ url('/login') }}" class="BtnGreen">ログイン・新規登録</a>
                     @endguest
                 </ul>
             </div>
         </nav>
 
-        <main class="py-4">
-            <div class="Main">
+        <main class="Main">
                 @yield('content')
-            </div>
-        </main>
+        </div>
     </div>
 </body>
 </html>

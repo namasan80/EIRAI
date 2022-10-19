@@ -11,7 +11,18 @@
             <h1 class="title">
                 {{ $sample->name }}
             </h1>
-                <p>投稿者:<a href="/users/{{$sample->user->id}}">{{ $sample->user->name }}</a></p>
+            <div class="MiniNameBox">
+                <a class="MiniNameA" href="/users/{{$sample->user->id}}">
+                    <div class="MiniIconBox">
+                        @empty($sample->user->image_path)
+                        <img class="MiniIcon" src="{{ asset('images/default_icon.png') }}">
+                        @else
+                        <img class="MiniIcon" src="{{$sample->user->image_path}}">
+                        @endempty
+                    </div>
+                    <div class="MiniName">{{ $sample->user->name }}</div>
+                </a>
+            </div>
                 
                 @auth
                 <button class="GoodButton{{$sample->id}}" onclick="good({{$sample->id}})">
@@ -24,7 +35,7 @@
                 @else
                     ログインするといいねができます。
                 @endauth
-                <p>いいね数：{{ $sample->goods()->count()}}(←最終的に消す予定)</p>
+                <p>いいね数：<span class="GoodCount{{$sample->id}}">{{ $sample->goods()->count()}}</span></p>
                 
                 <h3>依頼費用の目安</h3>
                 <p>{{ $sample->price }}円</p>
@@ -36,8 +47,6 @@
                 <a href="/samples">一覧へ</a>
             </div>
         </div>
-    </div>
-    <div class="PageTest">
     </div>
 </div>
 @endsection

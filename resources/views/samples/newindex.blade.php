@@ -6,23 +6,11 @@
         <div class="Page">
             <h1>サンプル一覧</h1>
             <div class='TopDiv'>
-                @if($search==null)
-                    <a class="BtnGreen2 TagBtn">人気順</a>
-                @else
-                    <a href="/samples" class="BtnGreen TagBtn">人気順</a>
-                @endif
-                @if($search=="new")
-                    <a class="BtnGreen2 TagBtn">新着順</a>
-                @else
-                    <a href="/samples?search=new" class="BtnGreen TagBtn">新着順</a>
-                @endif
-                @if($search=="follow")
-                    <a class="BtnGreen2 TagBtn">フォロー中</a>
-                @else
-                    <a href="/samples?search=follow" class="BtnGreen TagBtn">フォロー中</a>
-                @endif
+                <a href="/samples" class="BtnGreen TagBtn">人気順</a>
+                <a class="BtnGreen2 TagBtn">新着順</a>
             </div>
             <div class='TopDiv'>
+                <div class='TopDiv'>
                     @foreach ($samples as $sample)
                         <div class='RankBox'>
                             <div class='RankImgBox'>
@@ -30,8 +18,9 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
+                {!! $samples->links() !!}
             </div>
-            {!! $samples->links() !!}
         </div>
     </div>
 </div>
