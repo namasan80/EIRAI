@@ -29,6 +29,8 @@ Route::get('/samples', 'SampleController@index');
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/samples/create', 'SampleController@create');
     Route::post('/samples', 'SampleController@store');
+    Route::get('/samples/edit/{sample}', 'SampleController@edit');
+    Route::put('/samples/{sample}', 'SampleController@update');
 });
 Route::get('/samples/{sample}', 'SampleController@show');
 
@@ -37,6 +39,7 @@ Route::get('/requests', 'ReqController@index');
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/requests/create', 'ReqController@create');
     Route::post('/requests', 'ReqController@store');
+    Route::post('/requests/offer', 'ReqController@offer');
 });
 Route::get('/requests/{req}', 'ReqController@show');
 

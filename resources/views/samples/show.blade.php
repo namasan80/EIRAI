@@ -43,8 +43,11 @@
                 <p>{{ $sample->time }}時間</p>
                 <h3>詳細</h3>
                 <p>{{ $sample->detail }}</p>
-            <div class="footer">
-                <a href="/samples">一覧へ</a>
+            <div class='PageBottom'>
+                <a href="/samples/edit/{{$sample->id}}" class="BtnGreen">編集</a>
+            </div>
+            <div class='PageBottom'>
+                <a href="/samples" class="GrayA">一覧へ</a>
             </div>
         </div>
     </div>

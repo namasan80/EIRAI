@@ -5,6 +5,9 @@
     <div class="PageBlank">
         <div class="Page">
             <h1>サンプル一覧</h1>
+                @auth
+                    <p><a href="/samples/create">サンプルを投稿する</a></p>
+                @endauth
             <div class='TopDiv'>
                 @if($search==null)
                     <a class="BtnGreen2 TagBtn">人気順</a>
@@ -16,11 +19,13 @@
                 @else
                     <a href="/samples?search=new" class="BtnGreen TagBtn">新着順</a>
                 @endif
-                @if($search=="follow")
-                    <a class="BtnGreen2 TagBtn">フォロー中</a>
-                @else
-                    <a href="/samples?search=follow" class="BtnGreen TagBtn">フォロー中</a>
-                @endif
+                @auth
+                    @if($search=="follow")
+                        <a class="BtnGreen2 TagBtn">フォロー中</a>
+                    @else
+                        <a href="/samples?search=follow" class="BtnGreen TagBtn">フォロー中</a>
+                    @endif
+                @endauth
             </div>
             <div class='TopDiv'>
                     @foreach ($samples as $sample)

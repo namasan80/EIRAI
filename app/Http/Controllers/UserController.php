@@ -21,7 +21,6 @@ class UserController extends Controller
             'user' => $user,
             'samples' => $user->getSamples(),
             'reqs' => $user->getReqs(),
-            
         ]);
     }
     

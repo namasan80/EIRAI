@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SampleRequest extends FormRequest
+class SampleUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,6 @@ class SampleRequest extends FormRequest
             'sample.detail' => 'nullable|string|max:200',
             'sample.price' => 'nullable|numeric|max:999999',
             'sample.time' => 'nullable|numeric|max:999999',
-            'image' => 'required|max:1024|mimes:jpg,jpeg,png',
         ];
     }
 
@@ -39,7 +38,6 @@ class SampleRequest extends FormRequest
             'sample.detail' => '詳細',
             'sample.price' => '費用',
             'sample.time' => '制作時間',
-            'image' => '画像',
         ];
     }
 
@@ -50,10 +48,9 @@ class SampleRequest extends FormRequest
             'sample.name.min' => ':attributeを入力してください。',
             'sample.name.max' => ':attributeは20文字以下で入力してください。',
             'sample.detail.max' => ':attributeは200文字以下で入力してください。',
+            'sample.price.max' => ':attributeは999999以下で入力してください。',
+            'sample.time.max' => ':attributeは999999以下で入力してください。',
             'sample.price' => '費用',
-            'image.required' => '画像を設定してください。',
-            'image.max' => 'ファイルサイズが大きすぎます。',
-            'image.mimes' => '画像をアップロードしてください(拡張子png,jpg,jpeg)',
         ];
     }
 }
