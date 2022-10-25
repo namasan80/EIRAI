@@ -58,7 +58,7 @@ class User extends Authenticatable
     
     public function isfollow($userId)
     {
-      return $this->follows()->where('followed_user_id',$userId)->exists();
+        return $this->follows()->where('followed_user_id',$userId)->exists();
     }
     
     public function follow($userId, $followusers)
@@ -109,6 +109,11 @@ class User extends Authenticatable
     public function goods()
     {
         return $this->hasMany('App\Good');  
+    }
+    
+    public function offers()
+    {
+        return $this->hasMany('App\Offer');  
     }
     
     //いいね関連処理

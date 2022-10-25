@@ -10,7 +10,6 @@
                     @csrf
                     <div class="title">
                         <input type="file" name="image">
-                        {{ csrf_field() }}
                         <p class="ErrorP">{{$errors->first('image')}}</p>
                         <h2>タイトル</h2>
                         <input type="text" name="sample[name]" placeholder="タイトル"/>

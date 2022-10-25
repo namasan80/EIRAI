@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Sample;
 use App\Http\Requests\SampleRequest;
+use App\Http\Requests\SampleUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Storage;
@@ -38,8 +39,25 @@ class SampleController extends Controller
         return redirect('/samples/' . $sample->id);
     }
     
+    public function update(SampleUpdateRequest $request, Sample $sample)
+    {
+        $input = $request['sample'];
+        $sample->fill($input)->save();
+        return redirect('/samples/' . $sample->id);
+    }
+    
     public function show(Sample $sample)
     {
         return view('samples/show')->with(['sample' => $sample]);
     }
+    
+    public function edit(Sample $sample)
+    {
+        if($sample->user_id == Auth::user()->id){
+            return view('samples/edit')->with(['sample' => $sample]);
+        }else{
+             return redirect('/samples/' . $sample->id);
+        }
+    }
+    
 }

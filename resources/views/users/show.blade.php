@@ -74,7 +74,7 @@
                 <h3>新着リクエスト</h3>
                 <div class='TopMore'>
                     <a class="GrayA" href="/samples">もっと見る</a>
-                    <p ><a href="/samples/create" class="BtnGreen">サンプルを投稿する</a></p>
+                    <p><a href="/samples/create" class="BtnGreen">サンプルを投稿する</a></p>
                 </div>
             </div>
             

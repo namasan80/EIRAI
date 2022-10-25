@@ -191,6 +191,8 @@
 
 .MiniNameBox{
   margin: 0px 0px 10px 0px;
+  display: flex;
+
 }
 
 .MiniIconBox{
@@ -251,12 +253,20 @@
     font-size: 14px;
 }
 
+.PageBottom{
+    margin: 20px 0px 0px;
+}
+
 /*サンプル*/
 
 .SampleImg img{
     width: 100%;
     aspect-ratio: 640 / 360;
     border-radius: 6px;
+}
+
+.Hide1{
+  display: none;
 }
 
 /*ログインページ*/

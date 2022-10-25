@@ -10986,7 +10986,8 @@ return jQuery;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {function good(sampleId) {
+/* WEBPACK VAR INJECTION */(function($) {//いいね処理
+function good(sampleId) {
   $.ajax({
     headers: {
       "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
@@ -10994,24 +10995,26 @@ return jQuery;
     url: "/good/" + sampleId,
     type: "POST"
   }).done(function (data, status, xhr) {
-    var elm = document.getElementsByClassName("GoodButton" + sampleId);
-    var elm2 = document.getElementsByClassName("GoodCount" + sampleId);
-
-    for (var i = 0; i < elm.length; i++) {
-      if (elm[i].innerText == "いいね") {
-        elm[i].innerText = "いいね解除";
-        elm2[i].innerText = Number(elm2[i].innerText) + 1;
-      } else {
-        elm[i].innerText = "いいね";
-        elm2[i].innerText = Number(elm2[i].innerText) - 1;
-      }
-    }
+    console.log("いいね送信成功");
   }).fail(function (xhr, status, error) {
     console.log("いいね送信失敗");
-  });
+  }); //表示をかなり強引に書き換える
+
+  var elm = document.getElementsByClassName("GoodButton" + sampleId);
+  var elm2 = document.getElementsByClassName("GoodCount" + sampleId);
+
+  for (var i = 0; i < elm.length; i++) {
+    if (elm[i].innerText == "いいね") {
+      elm[i].innerText = "いいね解除";
+      elm2[i].innerText = Number(elm2[i].innerText) + 1;
+    } else {
+      elm[i].innerText = "いいね";
+      elm2[i].innerText = Number(elm2[i].innerText) - 1;
+    }
+  }
 }
 
-window.good = good;
+window.good = good; //フォロー処理
 
 function follow(userId) {
   $.ajax({
@@ -11022,24 +11025,57 @@ function follow(userId) {
     type: "POST"
   }).done(function (data, status, xhr) {
     console.log("フォロー成功");
-    var elm = document.getElementsByClassName("FollowButton" + userId);
-    var elm2 = document.getElementsByClassName("FollowCount" + userId);
-
-    for (var i = 0; i < elm.length; i++) {
-      if (elm[i].innerText == "フォロー") {
-        elm[i].innerText = "フォロー解除";
-        elm2[i].innerText = Number(elm2[i].innerText) + 1;
-      } else {
-        elm[i].innerText = "フォロー";
-        elm2[i].innerText = Number(elm2[i].innerText) - 1;
-      }
-    }
   }).fail(function (xhr, status, error) {
     console.log("フォロー失敗");
-  });
+  }); //表示をかなり強引に書き換える
+
+  var elm = document.getElementsByClassName("FollowButton" + userId);
+  var elm2 = document.getElementsByClassName("FollowCount" + userId);
+
+  for (var i = 0; i < elm.length; i++) {
+    if (elm[i].innerText == "フォロー") {
+      elm[i].innerText = "フォロー解除";
+      elm2[i].innerText = Number(elm2[i].innerText) + 1;
+    } else {
+      elm[i].innerText = "フォロー";
+      elm2[i].innerText = Number(elm2[i].innerText) - 1;
+    }
+  }
 }
 
 window.follow = follow;
+
+function hide(num) {
+  var elm = document.getElementsByClassName("Hide" + num);
+
+  for (var i = 0; i < elm.length; i++) {
+    elm[i].style.display = "none";
+  }
+
+  elm = document.getElementsByClassName("Unhide" + num);
+
+  for (var _i = 0; _i < elm.length; _i++) {
+    elm[_i].style.display = "none";
+  }
+}
+
+window.hide = hide;
+
+function unhide(num) {
+  var elm = document.getElementsByClassName("Hide" + num);
+
+  for (var i = 0; i < elm.length; i++) {
+    elm[i].style.display = "inline";
+  }
+
+  elm = document.getElementsByClassName("Unhide" + num);
+
+  for (var _i2 = 0; _i2 < elm.length; _i2++) {
+    elm[_i2].style.display = "inline";
+  }
+}
+
+window.unhide = unhide;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
